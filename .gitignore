@@ -5,3 +5,4 @@ demos/*/public/pdf/
 *.local
 .DS_Store
 *.tsbuildinfo
+.trae/
