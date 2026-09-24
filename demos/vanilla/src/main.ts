@@ -104,7 +104,7 @@ const docMap: Record<string, { src: string; type: string; name: string }> = {
   markdown: { src: MEDIA.markdown.local, type: 'markdown', name: 'sample.md' },
   docx: { src: MEDIA.docx.local, type: 'docx', name: 'sample.docx' },
   xlsx: { src: MEDIA.xlsx.local, type: 'xlsx', name: 'sample.xlsx' },
-  broken: { src: 'media/not-exist.pdf', type: 'pdf', name: 'not-exist.pdf' }
+  broken: { src: '/media/not-exist.pdf', type: 'pdf', name: 'not-exist.pdf' }
 }
 document.querySelectorAll<HTMLButtonElement>('[data-doc]').forEach((btn) => {
   btn.addEventListener('click', () => {
@@ -132,7 +132,7 @@ document.getElementById('doc-page2')!.addEventListener('click', () => {
 /* ---------- 文档：水印切换（watermark 属性：文字 / 图片，大小与间距可配置） ---------- */
 const wmMap: Record<string, string> = {
   text: JSON.stringify({ text: '内部资料 · 禁止外传', fontSize: 18, gap: 120 }),
-  image: JSON.stringify({ image: 'media/sample.svg', width: 120, gap: 100, opacity: 0.4 })
+  image: JSON.stringify({ image: '/media/sample.svg', width: 120, gap: 100, opacity: 0.4 })
 }
 document.querySelectorAll<HTMLButtonElement>('[data-wm]').forEach((btn) => {
   btn.addEventListener('click', () => {

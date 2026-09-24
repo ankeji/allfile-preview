@@ -17,13 +17,6 @@
 - **水印**：`watermark` 属性配置文字或图片水印（所有预览类型生效），大小、颜色、透明度、旋转、间距均可配，canvas 生成平铺图案覆盖预览区，不影响交互
 - **错误友好化**：断网 / 跨域 / file:// 协议 / HTTP 404 / 加密文件 / 空表格等场景均有明确中文提示
 
-## 在线体验
-
-无需安装，直接在浏览器中体验全部功能（GitHub Pages 托管，推送到 main 分支自动部署）：
-
-- **完整 Demo**：<https://ankeji.github.io/allfile-preview/> —— 八类文件预览、控件配置、水印、事件日志、错误态均可交互体验
-- **UMD 免构建示例**：<https://ankeji.github.io/allfile-preview/umd-standalone.html> —— 单文件引入 UMD 产物即用，支持选择本机文件预览
-
 ## 安装（npm 已发布）
 
 ```bash
@@ -57,7 +50,7 @@ npm install @allfile-preview/react @allfile-preview/core
 
 ### 2. 原生 HTML（UMD 免构建）
 
-先 `npm run build`，然后直接引入产物（可 file:// 协议打开，见 `demos/vanilla/public/umd-standalone.html`）：
+先 `npm run build`，然后直接引入产物（可 file:// 协议打开，见 `demos/vanilla/umd-standalone.html`）：
 
 ```html
 <script src="node_modules/@allfile-preview/core/dist/allfile-preview.umd.cjs"></script>
@@ -569,7 +562,7 @@ import '@allfile-preview/core' // 注册所有自定义元素
 ### 其他说明
 
 - docx 中文字体（宋体/微软雅黑等）依赖**查看者系统字体**，无需服务器部署字体文件
-- `file://` 协议直接双击打开 UMD 页面时，浏览器禁止 fetch 本地路径——可通过 `<input type="file">` 选择本机文件转 blob URL 预览（demo `umd-standalone.html` 有完整示例，见 `demos/vanilla/public/umd-standalone.html`），或用静态服务器走 http
+- `file://` 协议直接双击打开 UMD 页面时，浏览器禁止 fetch 本地路径——可通过 `<input type="file">` 选择本机文件转 blob URL 预览（demo `umd-standalone.html` 有完整示例），或用静态服务器走 http
 
 ## 本仓库开发
 

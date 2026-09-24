@@ -134,7 +134,7 @@ const DOC_MAP = {
   markdown: { src: MEDIA.markdown.local, type: 'markdown', name: 'sample.md' },
   docx: { src: MEDIA.docx.local, type: 'docx', name: 'sample.docx' },
   xlsx: { src: MEDIA.xlsx.local, type: 'xlsx', name: 'sample.xlsx' },
-  broken: { src: 'media/not-exist.pdf', type: 'pdf', name: 'not-exist.pdf' }
+  broken: { src: '/media/not-exist.pdf', type: 'pdf', name: 'not-exist.pdf' }
 }
 
 // 操作栏自定义按钮（JSON 字符串，Vue2 setAttribute 兼容）
@@ -220,7 +220,7 @@ export default {
     setWm(kind) {
       const map = {
         text: { text: '内部资料 · 禁止外传', fontSize: 18, gap: 120 },
-        image: { image: 'media/sample.svg', width: 120, gap: 100, opacity: 0.4 }
+        image: { image: '/media/sample.svg', width: 120, gap: 100, opacity: 0.4 }
       }
       this.docWatermark = kind === 'off' ? '' : JSON.stringify(map[kind])
     }

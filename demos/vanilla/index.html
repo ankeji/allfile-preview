@@ -76,7 +76,7 @@
       <button data-img="broken">404（错误态）</button>
       <button id="btn-api">调用 zoomTo(2) / rotateBy(90)</button>
     </div>
-    <file-preview id="img-preview" class="preview" src="media/sample.svg" type="image" name="示例图片.svg" downloadable watermark='{"text":"file-preview · 内部资料","fontSize":20,"gap":160}'></file-preview>
+    <file-preview id="img-preview" class="preview" src="/media/sample.svg" type="image" name="示例图片.svg" downloadable watermark='{"text":"file-preview · 内部资料","fontSize":20,"gap":160}'></file-preview>
     <div class="log" id="img-log">事件日志（load / error / zoom / rotate / reset / download）：</div>
   </div>
 
@@ -102,7 +102,7 @@
       <button data-aud="local">本地 WAV</button>
       <button data-aud="remote">远程 MP3</button>
     </div>
-    <file-preview id="audio-preview" class="preview" type="audio" src="media/tone.wav" name="C 大调琶音 · tone.wav" color="#10b981" downloadable controls='{"skip":5}'></file-preview>
+    <file-preview id="audio-preview" class="preview" type="audio" src="/media/tone.wav" name="C 大调琶音 · tone.wav" color="#10b981" downloadable controls='{"skip":5}'></file-preview>
     <div class="log" id="audio-log">事件日志：</div>
   </div>
 
@@ -123,7 +123,7 @@
       <button data-wm="image">图片水印</button>
       <button data-wm="off">关闭水印</button>
     </div>
-    <file-preview id="doc-preview" class="preview" src="media/sample.pdf" type="pdf" name="sample.pdf" cMapUrl="pdf/cmaps/" downloadable actions='[{"key":"delete","label":"删除","danger":true}]'></file-preview>
+    <file-preview id="doc-preview" class="preview" src="/media/sample.pdf" type="pdf" name="sample.pdf" cMapUrl="/pdf/cmaps/" downloadable actions='[{"key":"delete","label":"删除","danger":true}]'></file-preview>
     <div class="log" id="doc-log">事件日志（load / error / pagechange / zoom）：</div>
   </div>
 

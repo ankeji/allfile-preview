@@ -7,7 +7,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@allfile-preview/core": "0.1.1",
+    "@allfile-preview/core": "0.1.0",
     "vue": "^2.7.16"
   }
 }
