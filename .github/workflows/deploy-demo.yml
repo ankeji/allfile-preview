@@ -1,0 +1,70 @@
+# 部署 vanilla demo 到 GitHub Pages（无需服务器与域名）
+#
+# 使用前提（一次性手动设置）：
+#   仓库 Settings → Pages → Build and deployment → Source 选择 "GitHub Actions"
+#
+# 部署地址：https://ankeji.github.io/allfile-preview/
+name: Deploy demo to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同一时间只保留一次部署，避免排队堆积
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # 生成 demo 测试媒体（WAV/SVG/TXT/PDF/MD/DOCX/XLSX + pdfjs cmaps，零网络请求）
+      - name: Generate demo media
+        run: npm run gen:media
+
+      # 构建 core（UMD 产物供 umd-standalone.html 免构建示例页使用）
+      - name: Build core
+        run: npm run build -w packages/core
+
+      # vanilla demo 经 vite alias 直接引用 core 源码，--base 指定 Pages 子路径
+      - name: Build vanilla demo
+        run: npm run build -w demos/vanilla -- --base=/allfile-preview/
+
+      # UMD 产物复制到站点 ./umd/（umd-standalone.html 引用 ./umd/allfile-preview.umd.cjs）
+      - name: Copy UMD bundle
+        run: |
+          mkdir -p demos/vanilla/dist/umd
+          cp packages/core/dist/allfile-preview.umd.cjs demos/vanilla/dist/umd/
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: demos/vanilla/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

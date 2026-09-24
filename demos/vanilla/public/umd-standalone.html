@@ -33,8 +33,10 @@
     }
     .file-label:hover { border-color: #3b82f6; background: #1e293b; }
   </style>
-  <!-- 直接引用 UMD 产物（先执行 npm run build 构建出 dist/allfile-preview.umd.cjs） -->
-  <script src="../../packages/core/dist/allfile-preview.umd.cjs"></script>
+  <!-- UMD 产物：部署脚本（GitHub Actions）会把它复制到 ./umd/ 目录；
+       本地体验时先 npm run build，再把 packages/core/dist/allfile-preview.umd.cjs
+       复制到本文件同级的 umd/ 目录（或直接改用本仓库根 node_modules 路径） -->
+  <script src="./umd/allfile-preview.umd.cjs"></script>
 </head>
 <body>
   <h1>file-preview · UMD 免构建接入</h1>
