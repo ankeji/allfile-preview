@@ -1,0 +1,41 @@
+{
+  "name": "@allfile-preview/core",
+  "version": "0.1.1",
+  "description": "跨框架文件预览 Web Components 核心（图片/视频/音频/PDF/TXT/Markdown/Word/Excel）",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./umd": "./dist/allfile-preview.umd.cjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "src/**/*.ts",
+    "dist/index.js"
+  ],
+  "scripts": {
+    "build": "npm run build:esm && npm run build:umd && npm run build:types",
+    "build:esm": "vite build --mode esm",
+    "build:umd": "vite build --mode umd",
+    "build:types": "tsc --emitDeclarationOnly"
+  },
+  "dependencies": {
+    "docx-preview": "^0.3.2",
+    "lit": "^2.8.0",
+    "marked": "^4.3.0",
+    "pdfjs-dist": "3.11.174",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/marked": "^4.3.2"
+  }
+}

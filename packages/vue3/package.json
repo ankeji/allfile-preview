@@ -1,0 +1,31 @@
+{
+  "name": "@allfile-preview/vue3",
+  "version": "0.1.1",
+  "description": "@allfile-preview/core 的 Vue3 封装（组件化 props/emits，无需配置 isCustomElement）",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc --emitDeclarationOnly && vite build"
+  },
+  "peerDependencies": {
+    "@allfile-preview/core": "^0.1.0",
+    "vue": "^3.2.0"
+  },
+  "devDependencies": {
+    "@allfile-preview/core": "0.1.1",
+    "vue": "^3.4.38"
+  }
+}

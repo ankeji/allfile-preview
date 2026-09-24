@@ -1,0 +1,7 @@
+node_modules/
+dist/
+demos/*/public/media/
+demos/*/public/pdf/
+*.local
+.DS_Store
+*.tsbuildinfo

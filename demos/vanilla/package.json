@@ -1,0 +1,12 @@
+{
+  "name": "@allfile-preview/demo-vanilla",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@allfile-preview/core": "0.1.0"
+  }
+}

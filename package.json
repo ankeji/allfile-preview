@@ -1,0 +1,23 @@
+{
+  "name": "allfile-preview",
+  "version": "0.1.0",
+  "private": true,
+  "description": "跨框架文件预览组件（原生 HTML / Vue2 / Vue3 / React）",
+  "workspaces": [
+    "packages/*",
+    "demos/*"
+  ],
+  "scripts": {
+    "build": "npm run build -w packages/core && npm run build -w packages/vue3 && npm run build -w packages/react",
+    "dev:vanilla": "npm run dev -w demos/vanilla",
+    "dev:vue2": "npm run dev -w demos/vue2-demo",
+    "gen:media": "node demos/shared/gen-media.mjs"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vitejs/plugin-vue2": "^2.3.1",
+    "docx": "^8.5.0",
+    "typescript": "~5.0.4",
+    "vite": "^4.5.3"
+  }
+}

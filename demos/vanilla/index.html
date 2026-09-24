@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>file-preview · 原生 HTML 接入示例</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: #020617;
+      color: #e2e8f0;
+      padding: 24px;
+    }
+    h1 { font-size: 22px; margin-bottom: 6px; }
+    .desc { color: #64748b; font-size: 13px; margin-bottom: 20px; }
+    .desc code { background: #1e293b; padding: 2px 6px; border-radius: 4px; color: #93c5fd; }
+    .section { margin-bottom: 28px; }
+    .section-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .section-sub { color: #64748b; font-size: 12px; margin-bottom: 10px; }
+    .preview {
+      width: 100%;
+      height: 420px;
+    }
+    .toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+    .toolbar button {
+      padding: 6px 14px;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      background: #0f172a;
+      color: #e2e8f0;
+      font-size: 13px;
+      cursor: pointer;
+      transition: border-color .15s, background .15s;
+    }
+    .toolbar button:hover { border-color: #3b82f6; background: #1e293b; }
+    .toolbar .file-label {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 14px;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      background: #0f172a;
+      color: #e2e8f0;
+      font-size: 13px;
+      cursor: pointer;
+      transition: border-color .15s, background .15s;
+    }
+    .toolbar .file-label:hover { border-color: #3b82f6; background: #1e293b; }
+    .log {
+      margin-top: 10px;
+      padding: 10px 12px;
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      font-family: Consolas, monospace;
+      font-size: 12px;
+      color: #94a3b8;
+      max-height: 120px;
+      overflow: auto;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>file-preview · 原生 HTML 接入</h1>
+  <p class="desc">ESM 方式：<code>import '@allfile-preview/core'</code> 后直接使用 <code>&lt;file-preview&gt;</code> 标签；另见 <a href="./umd-standalone.html" style="color:#60a5fa">UMD 免构建示例</a></p>
+
+  <!-- 图片：滚轮缩放 / 拖拽 / 旋转 / 工具栏 -->
+  <div class="section">
+    <div class="section-title">图片预览</div>
+    <div class="section-sub">支持滚轮缩放（以光标为中心）、拖拽平移、旋转、重置；downloadable 开启下载按钮；下方按钮可切换文件与调用命令式 API</div>
+    <div class="toolbar">
+      <button data-img="local">本地 SVG</button>
+      <button data-img="remote">远程图片</button>
+      <button data-img="broken">404（错误态）</button>
+      <button id="btn-api">调用 zoomTo(2) / rotateBy(90)</button>
+    </div>
+    <file-preview id="img-preview" class="preview" src="/media/sample.svg" type="image" name="示例图片.svg" downloadable watermark='{"text":"file-preview · 内部资料","fontSize":20,"gap":160}'></file-preview>
+    <div class="log" id="img-log">事件日志（load / error / zoom / rotate / reset / download）：</div>
+  </div>
+
+  <!-- 视频 -->
+  <div class="section">
+    <div class="section-title">视频预览</div>
+    <div class="section-sub">自定义控件：播放/暂停、快退/快进（controls 配置步长，本例 15 秒）、进度拖拽、音量、倍速、循环、全屏；点击画面也可切换播放</div>
+    <div class="toolbar">
+      <button data-vid="remote">远程 MP4</button>
+      <button data-vid="broken">404（错误态）</button>
+      <button data-ctl="full">完整控件（默认）</button>
+      <button data-ctl="mini">极简控件（白名单）</button>
+    </div>
+    <file-preview id="video-preview" class="preview" type="video" name="Big Buck Bunny.mp4" downloadable controls='{"skip":15}'></file-preview>
+    <div class="log" id="video-log">事件日志（load / error / play / pause / timeupdate / seek / volumechange / ratechange / fullscreenchange / download）：</div>
+  </div>
+
+  <!-- 音频 -->
+  <div class="section">
+    <div class="section-title">音频预览</div>
+    <div class="section-sub">卡片式播放器（脚本生成的本地 WAV，离线可用）；controls 配置快退/快进步长为 5 秒</div>
+    <div class="toolbar">
+      <button data-aud="local">本地 WAV</button>
+      <button data-aud="remote">远程 MP3</button>
+    </div>
+    <file-preview id="audio-preview" class="preview" type="audio" src="/media/tone.wav" name="C 大调琶音 · tone.wav" color="#10b981" downloadable controls='{"skip":5}'></file-preview>
+    <div class="log" id="audio-log">事件日志：</div>
+  </div>
+
+  <!-- 文档：PDF / 文本 / Word / Excel -->
+  <div class="section">
+    <div class="section-title">文档预览（PDF / TXT / Markdown / Word / Excel）</div>
+    <div class="section-sub">全部本地解析（pdf.js / marked / docx-preview / SheetJS），无外部请求，局域网可用；也可选择本机文件（blob URL + 文件名检测）；操作栏支持下载与自定义按钮（actions 属性 → action 事件）</div>
+    <div class="toolbar">
+      <button data-doc="pdf">PDF</button>
+      <button data-doc="text">TXT</button>
+      <button data-doc="markdown">MD</button>
+      <button data-doc="docx">DOCX</button>
+      <button data-doc="xlsx">XLSX</button>
+      <button data-doc="broken">404（错误态）</button>
+      <label class="file-label">选择本地文件…<input type="file" id="doc-file" hidden accept=".pdf,.txt,.log,.md,.json,.csv,.docx,.xlsx" /></label>
+      <button id="doc-page2">PDF goToPage(2)</button>
+      <button data-wm="text">文字水印</button>
+      <button data-wm="image">图片水印</button>
+      <button data-wm="off">关闭水印</button>
+    </div>
+    <file-preview id="doc-preview" class="preview" src="/media/sample.pdf" type="pdf" name="sample.pdf" cMapUrl="/pdf/cmaps/" downloadable actions='[{"key":"delete","label":"删除","danger":true}]'></file-preview>
+    <div class="log" id="doc-log">事件日志（load / error / pagechange / zoom）：</div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
