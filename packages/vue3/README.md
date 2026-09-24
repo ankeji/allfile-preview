@@ -2,7 +2,7 @@
 
 [`@allfile-preview/core`](https://www.npmjs.com/package/@allfile-preview/core) 的 Vue3 封装组件：类型完整的 props / emits，**无需配置 `isCustomElement`**，在 SFC / JSX / 模板中直接使用。
 
-支持预览的文件类型与全部功能（图片 / 视频 / 音频 / PDF / TXT / Markdown / Word / Excel、缩放、水印、下载、自定义操作栏等）见 [core 文档](https://www.npmjs.com/package/@allfile-preview/core)。
+支持预览的文件类型与全部功能（图片 / 视频 / 音频 / PDF / TXT / Markdown / Word / Excel、缩放、水印、下载、自定义操作栏等）见 [core 文档](https://www.npmjs.com/package/@allfile-preview/core)。**在线体验**：<https://allfile-preview.softinstall.top/>
 
 ## 安装
 

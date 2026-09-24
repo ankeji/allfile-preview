@@ -1,6 +1,6 @@
 {
   "name": "@allfile-preview/react",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "@allfile-preview/core 的 React 封装（事件桥接，支持 React 16.8+）",
   "license": "MIT",
   "type": "module",
@@ -25,7 +25,7 @@
     "react": ">=16.8.0"
   },
   "devDependencies": {
-    "@allfile-preview/core": "0.1.1",
+    "@allfile-preview/core": "0.1.2",
     "@types/react": "^18.3.5",
     "react": "^18.3.1"
   }

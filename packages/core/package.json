@@ -1,6 +1,6 @@
 {
   "name": "@allfile-preview/core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "跨框架文件预览 Web Components 核心（图片/视频/音频/PDF/TXT/Markdown/Word/Excel）",
   "license": "MIT",
   "type": "module",

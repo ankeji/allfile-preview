@@ -2,7 +2,7 @@
 
 [`@allfile-preview/core`](https://www.npmjs.com/package/@allfile-preview/core) 的 React 封装组件：事件自动桥接，**无需 `addEventListener`**，支持 **React 16.8+**（含 17 / 18 / 19）。
 
-支持预览的文件类型与全部功能（图片 / 视频 / 音频 / PDF / TXT / Markdown / Word / Excel、缩放、水印、下载、自定义操作栏等）见 [core 文档](https://www.npmjs.com/package/@allfile-preview/core)。
+支持预览的文件类型与全部功能（图片 / 视频 / 音频 / PDF / TXT / Markdown / Word / Excel、缩放、水印、下载、自定义操作栏等）见 [core 文档](https://www.npmjs.com/package/@allfile-preview/core)。**在线体验**：<https://allfile-preview.softinstall.top/>
 
 ## 安装
 

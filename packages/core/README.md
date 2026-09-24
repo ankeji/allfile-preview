@@ -4,6 +4,8 @@
 
 支持 **图片 / 视频 / 音频 / PDF / TXT / Markdown / Word(docx) / Excel(xlsx)** 预览，**全部本地解析渲染，无任何外部 CDN 请求，局域网（离线）环境可用**。
 
+**在线体验**：<https://allfile-preview.softinstall.top/>
+
 Vue3 项目推荐搭配 [`@allfile-preview/vue3`](https://www.npmjs.com/package/@allfile-preview/vue3)（免 `isCustomElement` 配置的封装组件）；React 项目推荐搭配 [`@allfile-preview/react`](https://www.npmjs.com/package/@allfile-preview/react)。
 
 ## 特性

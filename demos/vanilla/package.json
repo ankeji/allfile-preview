@@ -7,6 +7,6 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@allfile-preview/core": "0.1.0"
+    "@allfile-preview/core": "0.1.2"
   }
 }

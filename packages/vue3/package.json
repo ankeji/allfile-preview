@@ -1,6 +1,6 @@
 {
   "name": "@allfile-preview/vue3",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "@allfile-preview/core 的 Vue3 封装（组件化 props/emits，无需配置 isCustomElement）",
   "license": "MIT",
   "type": "module",
@@ -25,7 +25,7 @@
     "vue": "^3.2.0"
   },
   "devDependencies": {
-    "@allfile-preview/core": "0.1.1",
+    "@allfile-preview/core": "0.1.2",
     "vue": "^3.4.38"
   }
 }
